@@ -1,5 +1,5 @@
-#include<vector>
-#include <torch/extension.h>
+#include<vector> //https://blog.csdn.net/watqw/article/details/123363618
+#include <torch/extension.h> //https://g-airborne.com/bringing-your-deep-learning-model-to-production-with-libtorch-part-3-advanced-libtorch/
 
 using namespace std;
 
@@ -7,14 +7,16 @@ class Arithmetics {
 public:
   Arithmetics() {}  
   
-  int Arithmetics::divide(int dividend, int divisor) {
-    int res = 0;
+  int Arithmetics::divide(at::Tensor dividend, at::Tensor divisor) {
+    int dividend = dividend.data<int>()();
+    int divisor = divisor.data<int>();
+    auto res = 0;
     bool isNegative = (dividend > 0) ^ (divisor > 0);
     dd = abs(dividend);
     ds = abs(divisor);
     if(dd < ds)
       return res;
-    for(int b=15;b>=0;b--) {
+    for(int b=sizeof(int)*8;b>0;b--) {
       if(dd > ds<<b) {
         res += 1<<b;
         dd -= ds<<b;
@@ -24,9 +26,9 @@ public:
   }
   
   int Arithmetics::totalHammingDistance(at::Tensor input) {
-    int res = 0;    
+    auto res = 0;    
     vector<int> nums(input.data_ptr<int>(),input.data_ptr<int>()+input.numel());
-    for(int b=0;b<32;b++) {
+    for(int b=0;b<sizeof(int)*8;b++) {
       ones = 0;
       for (auto n: nums) {
         if(0 ^ n>>b)
