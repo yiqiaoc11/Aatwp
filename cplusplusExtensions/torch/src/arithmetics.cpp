@@ -1,6 +1,6 @@
 #include<vector> //https://blog.csdn.net/watqw/article/details/123363618
 #include <torch/extension.h> //https://g-airborne.com/bringing-your-deep-learning-model-to-production-with-libtorch-part-3-advanced-libtorch/
-
+//https://icode.best/i/74798145688291
 using namespace std;
 
 class Arithmetics {
