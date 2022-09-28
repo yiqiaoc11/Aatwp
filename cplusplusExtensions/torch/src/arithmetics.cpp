@@ -21,6 +21,20 @@ public:
       }
     }
     return res*-1?isNegative:res;
+  }
+  
+  int Arithmetics::totalHammingDistance(at::Tensor input) {
+    int res = 0;    
+    vector<int> nums(input.data_ptr<int>(),input.data_ptr<int>()+input.numel());
+    for(int b=0;b<32;b++) {
+      ones = 0;
+      for (auto n: nums) {
+        if(0 ^ n>>b)
+            ones += 1;
+        res += ones*(nums.size()-ones);
+      }
+    }
+    return res
 };
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
