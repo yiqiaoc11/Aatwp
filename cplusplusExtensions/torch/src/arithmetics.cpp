@@ -16,7 +16,7 @@ public:
     ds = abs(divisor);
     if(dd < ds)
       return res;
-    for(int b=sizeof(int)*8;b>0;b--) {
+    for(int b=sizeof(int)*8-1;b>=0;b--) {
       if(dd > ds<<b) {
         res += 1<<b;
         dd -= ds<<b;
@@ -37,6 +37,7 @@ public:
       }
     }
     return res
+  }
 };
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
