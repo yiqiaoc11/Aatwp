@@ -1,4 +1,17 @@
+#include <pybind11/pybind11.h>
 
+#include <vector>
+#include <pybind11/stl.h>
+
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
+using namespace std;
+namespace py = pybind11;
+
+class Arithmetics {
+public:
+  Arithmetics() {}  
   int Arithmetics::divide(at::Tensor dividend, at::Tensor divisor) {
     int dividend = dividend.data<int>()();
     int divisor = divisor.data<int>();
@@ -30,3 +43,4 @@
     }
     return res
   }
+};
