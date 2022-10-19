@@ -44,11 +44,11 @@ public:
 
 namespace py = pybind11;
 PYBIND11_MODULE(cmake_example, m) {
-    m.doc() = R"pbdoc(
-        Pybind11 example plugin
-        -----------------------
-        .. currentmodule:: cmake_example
-    )pbdoc";
+  m.doc() = R"pbdoc(
+                   Pybind11 example plugin
+                   -----------------------
+                   .. currentmodule:: cmake_example
+                   )pbdoc";
 
   py::class_<Arithmetics>(
                          m, "Arithmetics"
