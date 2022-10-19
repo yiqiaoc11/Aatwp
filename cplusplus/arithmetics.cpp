@@ -12,9 +12,7 @@ namespace py = pybind11;
 class Arithmetics {
 public:
   Arithmetics() {}  
-  int Arithmetics::divide(at::Tensor dividend, at::Tensor divisor) {
-    int dividend = dividend.data<int>()();
-    int divisor = divisor.data<int>();
+  int Arithmetics::divide(int dividend, int divisor) {
     auto res = 0;
     bool isNegative = (dividend > 0) ^ (divisor > 0);
     dd = abs(dividend);
@@ -30,9 +28,8 @@ public:
     return res*-1?isNegative:res;
   }
   
-  int Arithmetics::totalHammingDistance(at::Tensor input) {
-    auto res = 0;    
-    vector<int> nums(input.data_ptr<int>(),input.data_ptr<int>()+input.numel());
+  int Arithmetics::totalHammingDistance(vector<int> nums) {
+    auto res = 0;
     for(int b=0;b<sizeof(int)*8;b++) {
       ones = 0;
       for (auto n: nums) {
@@ -44,3 +41,33 @@ public:
     return res
   }
 };
+
+namespace py = pybind11;
+PYBIND11_MODULE(cmake_example, m) {
+    m.doc() = R"pbdoc(
+        Pybind11 example plugin
+        -----------------------
+
+        .. currentmodule:: cmake_example
+
+        .. autosummary::
+           :toctree: _generate
+
+           add
+           subtract
+    )pbdoc";
+
+  py::class_<Arithmetics>(
+                         m, "Arithmetics"
+                         )
+        .def(py::init<>())
+        .def("divide", &Arithmetics::divide)
+        .def("totalHammingDistance", &Arithmetics::totalHammingDistance)
+        ;
+
+#ifdef VERSION_INFO
+    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+    m.attr("__version__") = "dev";
+#endif
+}
