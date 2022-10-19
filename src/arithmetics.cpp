@@ -1,3 +1,9 @@
+/* This file is to provide some arithemetic algorithms at lowest
+Time/Space complexity in measures of big O for users of different
+ML platforms like Tensorflow/Pytorch in python/pybind environment. 
+
+Auther: CYQ
+*/
 #include <pybind11/pybind11.h>
 
 #include <vector>
