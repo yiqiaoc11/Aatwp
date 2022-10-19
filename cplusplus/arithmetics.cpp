@@ -47,14 +47,7 @@ PYBIND11_MODULE(cmake_example, m) {
     m.doc() = R"pbdoc(
         Pybind11 example plugin
         -----------------------
-
         .. currentmodule:: cmake_example
-
-        .. autosummary::
-           :toctree: _generate
-
-           add
-           subtract
     )pbdoc";
 
   py::class_<Arithmetics>(
