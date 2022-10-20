@@ -49,7 +49,7 @@ public:
 };
 
 namespace py = pybind11;
-PYBIND11_MODULE(cmake_example, m) {
+PYBIND11_MODULE(cmake_aatwp, m) {
   m.doc() = R"pbdoc(
                    Pybind11 aatwp plugin
                    -----------------------
