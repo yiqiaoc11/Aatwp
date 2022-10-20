@@ -30,7 +30,7 @@ public:
         i2, m2 = i+k+1, r2+m1
       if r3 + m2 > m3:
         i3, m3 = i+2*k+1, r3+m2
-        res = vector<int>(i1, i2, i3);
+        res = vector<int>{i1, i2, i3};
     }
     return res;
 };
