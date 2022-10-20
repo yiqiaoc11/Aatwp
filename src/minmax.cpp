@@ -4,7 +4,17 @@ Time/Space complexity in measures of big O for users of different
 ML platforms like Tensorflow/Pytorch in python/pybind environment. 
 Auther: CYQ
 */
-#include<vector>
+#include <pybind11/pybind11.h>
+
+#include <vector>
+#include <pybind11/stl.h>
+
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
+using namespace std;
+namespace py = pybind11;
+
 class Minmax {
 public:
   Minmax() {}
