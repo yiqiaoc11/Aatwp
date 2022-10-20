@@ -1,6 +1,7 @@
 #include<vector>
 class Minmax {
 public:
+  Minmax() {}
   //find 3 unoverlapped subarray with length k to max their sum
   vector<int> Minmax::maxSumOfThreeSubarrays(<vector> nums, int k) {
     int m1, m2, m3 = 0;
