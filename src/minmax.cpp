@@ -50,3 +50,25 @@ public:
     }
     return res;
 };
+
+namespace py = pybind11;
+PYBIND11_MODULE(cmake_aatwp, m) {
+  m.doc() = R"pbdoc(
+                   Pybind11 aatwp plugin
+                   -----------------------
+                   .. currentmodule:: cmake_aatwp
+                   )pbdoc";
+
+  py::class_<Minmax>(
+                         m, "Minmax"
+                         )
+        .def(py::init<>())
+        .def("maxSumOfThreeSubarrays", &Minmax::maxSumOfThreeSubarrays)
+        ;
+
+#ifdef VERSION_INFO
+    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+    m.attr("__version__") = "dev";
+#endif
+}
