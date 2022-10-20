@@ -1,3 +1,9 @@
+/* This file is to provide some operation to find maximum or minimum
+value with respect to some elements of a given sequence at lowest
+Time/Space complexity in measures of big O for users of different
+ML platforms like Tensorflow/Pytorch in python/pybind environment. 
+Auther: CYQ
+*/
 #include<vector>
 class Minmax {
 public:
