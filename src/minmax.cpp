@@ -49,6 +49,7 @@ public:
         res = vector<int>{i1, i2, i3};
     }
     return res;
+  }
 };
 
 namespace py = pybind11;
